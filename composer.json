@@ -15,13 +15,13 @@
         "psr-4": { "Osavchenko\\PrismicBundle\\": "" }
     },
     "require": {
-        "guzzlehttp/guzzle": "^6.3|^3.0",
+        "guzzlehttp/guzzle": "^6.3",
         "prismic/php-sdk": "3.*",
-        "symfony/config": "^2.7|^3.0",
-        "symfony/dependency-injection": "^2.7|^3.0",
-        "symfony/http-foundation": "^2.7|^3.0",
-        "symfony/http-kernel": "^2.7|^3.0",
-        "symfony/routing": "^2.7|^3.0"
+        "symfony/config": "^2.7|^3.0|^4.0",
+        "symfony/dependency-injection": "^2.7|^3.0|^4.0",
+        "symfony/http-foundation": "^2.7|^3.0|^4.0",
+        "symfony/http-kernel": "^2.7|^3.0|^4.0",
+        "symfony/routing": "^2.7|^3.0|^4.0"
     },
     "config": {
         "sort-packages": true

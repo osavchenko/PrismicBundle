@@ -36,7 +36,7 @@
             <argument type="service" id="prismic.cache" />
         </service>
 
-        <service id="prismic.context" class="%prismic.context.class%">
+        <service id="prismic.context" class="%prismic.context.class%" public="true">
             <argument type="service" id="prismic.helper" />
             <argument type="service" id="router" />
             <argument type="service" id="prismic.link_resolver" />
