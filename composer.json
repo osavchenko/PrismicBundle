@@ -12,7 +12,7 @@
         }
     ],
     "autoload": {
-        "psr-4": { "Prismic\\Bundle\\PrismicBundle\\": "" }
+        "psr-4": { "Osavchenko\\PrismicBundle\\": "" }
     },
     "require": {
         "guzzlehttp/guzzle": "^6.3|^3.0",

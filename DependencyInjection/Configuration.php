@@ -1,6 +1,6 @@
 <?php
 
-namespace Prismic\Bundle\PrismicBundle\DependencyInjection;
+namespace Osavchenko\PrismicBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

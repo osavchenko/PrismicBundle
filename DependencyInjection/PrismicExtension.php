@@ -1,6 +1,6 @@
 <?php
 
-namespace Prismic\Bundle\PrismicBundle\DependencyInjection;
+namespace Osavchenko\PrismicBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;

@@ -1,10 +1,9 @@
 <?php
 
-namespace Prismic\Bundle\PrismicBundle\EventListener;
+namespace Osavchenko\PrismicBundle\EventListener;
 
-use Prismic;
 use Prismic\Api;
-use Prismic\Bundle\PrismicBundle\Helper\PrismicContext;
+use Osavchenko\PrismicBundle\Helper\PrismicContext;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 
 /**

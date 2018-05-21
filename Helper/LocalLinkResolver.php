@@ -1,6 +1,6 @@
 <?php
 
-namespace Prismic\Bundle\PrismicBundle\Helper;
+namespace Osavchenko\PrismicBundle\Helper;
 
 use Prismic\LinkResolver;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;

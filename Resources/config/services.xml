@@ -9,11 +9,11 @@
         <parameter key="prismic.cache.default.class">Prismic\Cache\ApcCache</parameter>
         <parameter key="prismic.cache.no.class">Prismic\Cache\NoCache</parameter>
         <parameter key="prismic.client.class">GuzzleHttp\Client</parameter>
-        <parameter key="prismic.context.class">Prismic\Bundle\PrismicBundle\Helper\PrismicContext</parameter>
-        <parameter key="prismic.context_listener.class">Prismic\Bundle\PrismicBundle\EventListener\ContextListener</parameter>
-        <parameter key="prismic.controller.oauth.class">Prismic\Bundle\PrismicBundle\Controller\OAuthController</parameter>
-        <parameter key="prismic.helper.class">Prismic\Bundle\PrismicBundle\Helper\PrismicHelper</parameter>
-        <parameter key="prismic.helper.link_resolver.class">Prismic\Bundle\PrismicBundle\Helper\LocalLinkResolver</parameter>
+        <parameter key="prismic.context.class">Osavchenko\PrismicBundle\Helper\PrismicContext</parameter>
+        <parameter key="prismic.context_listener.class">Osavchenko\PrismicBundle\EventListener\ContextListener</parameter>
+        <parameter key="prismic.controller.oauth.class">Osavchenko\PrismicBundle\Controller\OAuthController</parameter>
+        <parameter key="prismic.helper.class">Osavchenko\PrismicBundle\Helper\PrismicHelper</parameter>
+        <parameter key="prismic.helper.link_resolver.class">Osavchenko\PrismicBundle\Helper\LocalLinkResolver</parameter>
     </parameters>
 
     <services>
