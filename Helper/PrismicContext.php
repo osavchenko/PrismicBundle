@@ -2,12 +2,12 @@
 
 namespace Prismic\Bundle\PrismicBundle\Helper;
 
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-
-use Prismic\api;
-use Prismic\Ref;
+use Prismic\Api;
 use Prismic\Document;
 use Prismic\Fragment\Link\DocumentLink;
+use Prismic\LinkResolver;
+use Prismic\Ref;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * Class PrismicContext
@@ -28,10 +28,11 @@ class PrismicContext
      * @param PrismicHelper $prismic
      * @param UrlGeneratorInterface $urlGenerator
      */
-    public function __construct(PrismicHelper $prismic, UrlGeneratorInterface $urlGenerator)
+    public function __construct(PrismicHelper $prismic, UrlGeneratorInterface $urlGenerator, LinkResolver $linkResolver)
     {
         $this->prismic = $prismic;
         $this->urlGenerator = $urlGenerator;
+        $this->linkResolver = $linkResolver;
     }
 
     /**
@@ -48,8 +49,6 @@ class PrismicContext
     public function setAccessToken($accessToken)
     {
         $this->accessToken = $accessToken;
-
-        $this->api = $this->linkResolver = null;
     }
 
     /**
@@ -58,8 +57,6 @@ class PrismicContext
     public function setRef($ref)
     {
         $this->ref = $ref;
-
-        $this->linkResolver = null;
     }
 
     /**
@@ -111,14 +108,10 @@ class PrismicContext
     }
 
     /**
-     * @return LocalLinkResolver
+     * @return LinkResolver
      */
     public function getLinkResolver()
     {
-        if (!$this->linkResolver) {
-            $this->linkResolver = new LocalLinkResolver($this->urlGenerator, $this->getApi());
-        }
-
         return $this->linkResolver;
     }
 
@@ -152,4 +145,21 @@ class PrismicContext
     {
         return $this->getApi()->getByID($id);
     }
+
+    /**
+     * Get redirect response for preview session
+     *
+     * @param string $token
+     * @param string $defaultUrl
+     * @return RedirectResponse
+     */
+    public function previewSession($token, $defaultUrl)
+    {
+        $url = $this->getApi()->previewSession($token, $this->getLinkResolver(), '/');
+        $response = new RedirectResponse($url);
+        $response->headers->setCookie(new Cookie(Prismic\PREVIEW_COOKIE, $token, time() + 1800, '/', null, false, false));
+
+        return $response;
+    }
+
 }
