@@ -157,7 +157,7 @@ class PrismicContext
      */
     public function previewSession($token, $defaultUrl)
     {
-        $url = $this->getApi()->previewSession($token, $this->getLinkResolver(), '/');
+        $url = $this->getApi()->previewSession($token, $this->getLinkResolver(), $defaultUrl);
         $response = new RedirectResponse($url);
         $response->headers->setCookie(new Cookie(API::PREVIEW_COOKIE, $token, time() + 1800, '/', null, false, false));
 

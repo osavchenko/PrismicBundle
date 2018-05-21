@@ -24,7 +24,7 @@ class LocalLinkResolver extends LinkResolver
 
     /**
      * @param UrlGeneratorInterface $urlGenerator
-     * @param Api $api
+     * @param string $routeName
      */
     public function __construct(UrlGeneratorInterface $urlGenerator, $routeName)
     {

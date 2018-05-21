@@ -3,7 +3,6 @@
 namespace Prismic\Bundle\PrismicBundle\Helper;
 
 use GuzzleHttp\ClientInterface;
-use Ivory\HttpAdapter\HttpAdapterInterface;
 use Prismic\Api;
 use Prismic\Cache\CacheInterface;
 
@@ -30,7 +29,7 @@ class PrismicHelper
     private $clientSecret;
 
     /**
-     * @var HttpAdapterInterface|null
+     * @var ClientInterface|null
      */
     private $client;
 
@@ -46,7 +45,7 @@ class PrismicHelper
      * @param string               $accessToken
      * @param string               $clientId
      * @param string               $clientSecret
-     * @param HttpAdapterInterface $client
+     * @param ClientInterface      $client
      * @param CacheInterface       $cache
      */
     public function __construct(
@@ -96,7 +95,7 @@ class PrismicHelper
     }
 
     /**
-     * @return HttpAdapterInterface|null
+     * @return ClientInterface|null
      */
     public function getClient()
     {
