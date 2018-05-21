@@ -7,6 +7,8 @@ use Prismic\Document;
 use Prismic\Fragment\Link\DocumentLink;
 use Prismic\LinkResolver;
 use Prismic\Ref;
+use Symfony\Component\HttpFoundation\Cookie;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
@@ -157,7 +159,7 @@ class PrismicContext
     {
         $url = $this->getApi()->previewSession($token, $this->getLinkResolver(), '/');
         $response = new RedirectResponse($url);
-        $response->headers->setCookie(new Cookie(Prismic\PREVIEW_COOKIE, $token, time() + 1800, '/', null, false, false));
+        $response->headers->setCookie(new Cookie(API::PREVIEW_COOKIE, $token, time() + 1800, '/', null, false, false));
 
         return $response;
     }
