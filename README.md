@@ -1,20 +1,14 @@
 # PrismicBundle
 
-This Bundle integrates the http://prismic.io php-kit with the Symfony Framework:
-https://github.com/prismicio/php-kit
-
-For an example use see:
-https://github.com/prismicio/php-symfony-starter
+This Bundle integrates the http://prismic.io [php-kit](https://github.com/prismicio/php-kit) with the Symfony Framework:
 
 ## Installation
 
-Add the following dependencies to your projects ``composer.json`` file:
+Add the following bundle as a dependency to your project:
 
-    "require": {
-        # ..
-        "osavchenko/prismic-bundle": "dev-master"
-        # ..
-    }
+```bash
+composer require osavchenko/prismic-bundle
+```
 
 ## Configuration
 
@@ -40,13 +34,17 @@ You can override `prismic.link_resolver_route` parameter with route name to hand
 This route can have `$id` or `$slug` parameter to find document.
 If you want to implement custom logic for your LinkResolver you can override service `prismic.link_resolver`.
 
+## HOWTOs
+
+[Quick Start](https://github.com/osavchenko/PrismicBundle/wiki/Quick-Start) contains some basic example of bundle usage
+
 ## TODOs
 
-- [x] Add a listener for Symfony 2.3 to set the request data into the context as 2.3 does not support ExpressionLanguage
-- [ ] Add unit (and functional?) tests
+- [ ] Add tests
+- [ ] Make caching configurable
+- [ ] Check oAuth stuff and add some examples
 - [ ] Provide twig templates to render documents
-- [ ] Make caching configurable once https://github.com/prismicio/php-kit/issues/32 is implemented
 
 ## Credits
 
-Kudos to [lsmith77](https://github.com/lsmith77) who did all the hard work!
+Thanks to [contributors of original bundle](https://github.com/prismicio/SymfonyBundle/graphs/contributors)!
