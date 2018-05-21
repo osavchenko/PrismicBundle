@@ -28,15 +28,15 @@ class DefaultController extends Controller
     {
         /** @var PrismicContext $ctx */
         $ctx = $this->get('prismic.context');
-        $docs = $ctx->getApi()->forms()->everything->ref($ctx->getRef())
-            ->pageSize(10)
-            ->page($request->query->get('page', 1))
-            ->submit();
+        $docs = $ctx->getApi()->query(null, [
+            'pageSize' => 10,
+            'page' => $request->query->get('page', 1),
+        ]);
 
-        return $this->render('PrismicBundle:Default:index.html.twig', array(
+        return $this->render('PrismicBundle:Default:index.html.twig', [
             'ctx' => $ctx,
-            'docs' => $docs
-        ));
+            'docs' => $docs,
+        ]);
     }
 
     /**
@@ -55,15 +55,15 @@ class DefaultController extends Controller
 
         if ($doc) {
             if ($doc->getSlug() == $slug) {
-                return $this->render('PrismicBundle:Default:detail.html.twig', array(
+                return $this->render('PrismicBundle:Default:detail.html.twig', [
                     'ctx' => $ctx,
-                    'doc' => $doc
-                ));
+                    'doc' => $doc,
+                ]);
             }
 
             if (in_array($slug, $doc->getSlugs())) {
                 return $this->redirect(
-                    $this->generateUrl('detail', array('id' => $id, 'slug' => $doc->getSlug()))
+                    $this->generateUrl('detail', ['id' => $id, 'slug' => $doc->getSlug(),])
                 );
             }
 
@@ -79,20 +79,20 @@ class DefaultController extends Controller
      */
     public function searchAction(Request $request)
     {
-        $q = $request->query->get('q');
         /** @var PrismicContext $ctx */
         $ctx = $this->get('prismic.context');
-        $docs = $ctx->getApi()->forms()->everything->ref ($ctx->getRef())->query(
-                '[[:d = fulltext(document, "'.$q.'")]]'
-            )
-            ->pageSize(10)
-            ->page($request->query->get('page', 1))
-            ->submit();
+        $docs = $ctx->getApi()->query(
+            Prismic\Predicates::fulltext('document', $request->query->get('q')),
+            [
+                'pageSize' => 10,
+                'page' => $request->query->get('page', 1),
+            ]
+        );
 
-        return $this->render('PrismicBundle:Default:search.html.twig', array(
+        return $this->render('PrismicBundle:Default:search.html.twig', [
             'ctx' => $ctx,
-            'docs' => $docs
-        ));
+            'docs' => $docs,
+        ]);
     }
 
     /**
@@ -108,6 +108,7 @@ class DefaultController extends Controller
         $url = $ctx->getApi()->previewSession($token, $ctx->getLinkResolver(), '/');
         $response = new RedirectResponse($url);
         $response->headers->setCookie(new Cookie(Api::PREVIEW_COOKIE, $token, time() + 1800, '/', null, false, false));
+
         return $response;
     }
 
