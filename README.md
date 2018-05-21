@@ -12,7 +12,7 @@ Add the following dependencies to your projects ``composer.json`` file:
 
     "require": {
         # ..
-        "prismic/prismic-bundle": "~1.0@dev"
+        "osavchenko/prismic-bundle": "dev-master"
         # ..
     }
 
