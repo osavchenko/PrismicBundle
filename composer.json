@@ -5,17 +5,27 @@
     "keywords": ["CMS", "Prismic", "Persistence"],
     "homepage": "http://www.prismic.io",
     "license": "MIT",
-
+    "authors": [
+        {
+            "name": "Oleksandr Savchenko",
+            "email": "savchenko.oleksandr.ua@gmail.com"
+        }
+    ],
     "autoload": {
         "psr-4": { "Prismic\\Bundle\\PrismicBundle\\": "" }
     },
-
     "require": {
-        "php": ">=5.5.0",
-        "symfony/framework-bundle": "~2.4|~3.0",
-        "prismic/php-sdk": "3.*"
+        "guzzlehttp/guzzle": "^6.3|^3.0",
+        "prismic/php-sdk": "3.*",
+        "symfony/config": "^2.7|^3.0",
+        "symfony/dependency-injection": "^2.7|^3.0",
+        "symfony/http-foundation": "^2.7|^3.0",
+        "symfony/http-kernel": "^2.7|^3.0",
+        "symfony/routing": "^2.7|^3.0"
     },
-
+    "config": {
+        "sort-packages": true
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "3.0.x-dev"
